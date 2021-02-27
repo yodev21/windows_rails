@@ -1,11 +1,16 @@
 <h1>Tasks</h1>
+<% if flash[:notice] %>
+    <%= flash[:notice] %>
+<% end %>
 <%= link_to "新規登録", new_task_path %>
 <table>
     <%  @tasks.each do |task| %>
         <tr>
             <td><%= task.title %></td>
             <td><%= task.content %></td>
+            <td><%= task.user_id %></td>
             <td><%= link_to "編集", edit_task_path(task)%></td>
+            <td><%= link_to "削除", task_path(task), method: :delete %></td>
         </tr>
     <% end %>
 </table>

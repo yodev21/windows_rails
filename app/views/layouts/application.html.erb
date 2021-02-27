@@ -11,6 +11,14 @@
   </head>
 
   <body>
+    <header>
+      <% if current_user.nil? %>
+        <p><%= link_to "ログイン", new_user_session_path %></p>
+        <p><%= link_to "サインイン", new_user_registration_path %></p>
+      <% else %>
+        <p><%= link_to "サインアウト",  destroy_user_session_path, method: :delete %></p>
+      <% end %>
+    </header>
     <%= yield %>
   </body>
 </html>
